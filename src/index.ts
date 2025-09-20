@@ -45,9 +45,13 @@ export const ResultLikeSymbol = Symbol("retuple/result-like");
 
 export type ResultLikeSymbol = typeof ResultLikeSymbol;
 
-export type ResultLike<T, E> = {
-  [ResultLikeSymbol](): ResultLikeOk<T> | ResultLikeErr<E>;
+export type ResultLike<T = never, E = never> = {
+  [ResultLikeSymbol](): ResultLikeUnion<T, E>;
 };
 
-export type ResultLikeOk<T> = { ok: true; value: T };
-export type ResultLikeErr<E> = { ok: false; value: E };
+export type ResultLikeUnion<T = never, E = never> =
+  | ResultLikeOk<T>
+  | ResultLikeErr<E>;
+
+export type ResultLikeOk<T = never> = { ok: true; value: T };
+export type ResultLikeErr<E = never> = { ok: false; value: E };
