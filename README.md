@@ -15,7 +15,7 @@ Implement a custom result-like by implementing `ResultLike` on a class or object
 
 ## Creating a custom Result
 
-```
+```ts
 import { ResultLikeSymbol, type ResultLike } from "retuple-symbols";
 
 class CustomResult<T> implements ResultLike<T, CustomError> {
@@ -35,7 +35,7 @@ class CustomResult<T> implements ResultLike<T, CustomError> {
 
 ## Using a custom Result
 
-```
+```ts
 import { Result, Ok } from "retuple";
 
 const custom = new CustomResult("test");
